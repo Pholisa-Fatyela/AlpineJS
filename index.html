@@ -62,7 +62,44 @@
             </div>
             <div class="col">
                 <h4>6.Adding dynaminc HTML</h4>
-
+                <div x-data="{ code: '<p>Dynamic Paragraph</p>'}">
+                    <div x-html="code"></div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col">
+                <h4>7. Using x-ref directive</h4>
+                <div x-data="{ code: '<p>Dynamic Paragraph</p>'}">
+                    <div x-ref="sentence"> I am a sentence</div>
+                    <button @click="$refs.sentence.innerText = 'I just changed'">Change Sentence</button>
+                </div>
+            </div>
+            <div class="col">
+                 <!-- The x-if directive works when it is inside the template tag -->
+                <h4>8. Using x-if directive</h4>
+                <div x-data="{ socks: 'blue'}">
+                    <template x-if="socks==='blue'">
+                        <p>My socks are blue</p>
+                    </template>
+                    <template x-if="socks==='green'">
+                        <p>My socks are green</p>
+                    </template>
+                    <button @click="socks = 'green'">Change Socks</button>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <h4>9. Using the x-for directive</h4>
+            <div x-data="{ groceries: ['Milk', 'Eggs', 'Cheese'] }">
+                <p>Groceries</p>
+                <ul>
+                    <template x-for="item in groceries"> 
+                        <li x-text="item"></li>
+                    </template>
+                </ul>
             </div>
         </div>
     </div>
